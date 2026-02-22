@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  generator:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      # This mounts the HAYDEE_PATH from your .env file on your host machine 
+      # to /haydee inside the container.
+      - ${HAYDEE_PATH}:/haydee
+    environment:
+      # This overrides the HAYDEE_PATH inside the container so the script
+      # knows where to look for the mounted directory.
+      - HAYDEE_PATH=/haydee
