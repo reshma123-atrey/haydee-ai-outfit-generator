@@ -35,6 +35,7 @@ class GeminiModClient:
         2. Transparency/Background: Keep the blank and transparent spaces exactly where they are in the original file. Do not fill empty UV space.
         3. Application: Apply the '{style}' aesthetic purely to the textured areas (armor panels, skin, details).
         4. Quality: Ensure high-fidelity texturing with sharp details, respecting the shadows and highlights of the original topology.
+        5. Resolution: Please generate the output image in exactly 2048x2048 (2K) resolution.
         
         Output ONLY the generated texture image.
         """
@@ -52,6 +53,9 @@ class GeminiModClient:
                 contents=contents,
                 config=types.GenerateContentConfig(
                     response_modalities=['IMAGE'],
+                    image_config=types.ImageConfig(
+                        image_size="2K"
+                    )
                 )
             )
 
@@ -88,6 +92,13 @@ class GeminiModClient:
                          break
             if not saved:
                 raise RuntimeError("No image was returned from Gemini API.")
+                
+            try:
+                with Image.open(output_path) as gen_img:
+                    width, height = gen_img.size
+                    logger.info(f"Generated image resolution from Gemini API: {width}x{height}")
+            except Exception as e:
+                logger.warning(f"Could not determine generated image resolution: {e}")
                 
             logger.info(f"Gemini successfully generated the new texture: {output_path}")
 

@@ -21,6 +21,8 @@ class ImageProcessor:
         """Converts a generated image (PNG/JPG) back to DDS format."""
         logger.info(f"Converting {img_path.name} to DDS...")
         with Image(filename=str(img_path)) as img:
+            # Force size 2048x2048 before saving
+            img.resize(2048, 2048)
             # DXT5 compression is standard for diffuse textures with details/alpha
             img.compression = 'dxt5'
             img.format = 'dds'
