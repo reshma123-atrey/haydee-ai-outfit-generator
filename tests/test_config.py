@@ -1,0 +1,47 @@
+import pytest
+import os
+from pydantic_settings import BaseSettings
+from pydantic import ValidationError
+
+def test_settings_initialization(mock_config):
+    """Test that settings load correctly from the environment."""
+    assert mock_config.gemini_api_key == "fake_test_key_123"
+    assert "fake_haydee_path" in str(mock_config.haydee_path) or "pytest" in str(mock_config.haydee_path)
+
+def test_settings_property_outfits_dir(mock_config):
+    """Test the computed outfits_dir property."""
+    expected_path = mock_config.haydee_path / "Outfits"
+    assert mock_config.outfits_dir == expected_path
+
+def test_settings_property_base_texture_path(mock_config):
+    """Test the computed base_texture_path property."""
+    expected_path = mock_config.haydee_path / "Outfits" / "Haydee" / "Suit_D.dds"
+    assert mock_config.base_texture_path == expected_path
+
+def test_settings_missing_api_key(monkeypatch):
+    """Test that missing required settings raise ValidationError."""
+    import os
+    import core.config
+    
+    # Force pure environment variables for this test
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    monkeypatch.setattr(core.config, "settings", None)
+    
+    with pytest.raises(ValidationError) as excinfo:
+        core.config.Settings(_env_file=None)
+        
+    assert "gemini_api_key" in str(excinfo.value)
+
+def test_settings_missing_haydee_path(monkeypatch):
+    """Test that missing required settings raise ValidationError."""
+    import os
+    import core.config
+    
+    monkeypatch.delenv("HAYDEE_PATH", raising=False)
+    monkeypatch.setenv("GEMINI_API_KEY", "fake_test_key")
+    monkeypatch.setattr(core.config, "settings", None)
+    
+    with pytest.raises(ValidationError) as excinfo:
+        core.config.Settings(_env_file=None)
+        
+    assert "haydee_path" in str(excinfo.value)

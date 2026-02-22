@@ -1,0 +1,99 @@
+import pytest
+from unittest.mock import MagicMock, patch
+import main
+
+@patch("main.argparse.ArgumentParser.parse_args")
+@patch("main.ModBuilder")
+@patch("main.ImageProcessor")
+@patch("main.settings")
+@patch("main.GeminiModClient")
+@patch("main.tempfile.TemporaryDirectory")
+def test_main_success_flow(
+    mock_tmp_dir, 
+    mock_gemini_client_class,
+    mock_settings_in_main,
+    mock_image_processor, 
+    mock_mod_builder_class, 
+    mock_parse_args, 
+    mock_config
+):
+    """Test the successful end-to-end run of the CLI application."""
+    mock_args = MagicMock()
+    mock_args.name = "TestMod"
+    mock_args.style = "Test Style"
+    mock_parse_args.return_value = mock_args
+    
+    # Setup mock path return based on settings property
+    mock_path = MagicMock()
+    mock_path.exists.return_value = True
+    mock_settings_in_main.base_texture_path = mock_path
+    
+    # Setup ModBuilder mock
+    mock_builder_instance = MagicMock()
+    mock_builder_instance.mod_dir = mock_config.outfits_dir / "TestMod"
+    mock_mod_builder_class.return_value = mock_builder_instance
+    
+    # Setup temp directory mock
+    mock_tmp_context = MagicMock()
+    mock_tmp_context.__enter__.return_value = "/tmp/fake_dir"
+    mock_tmp_dir.return_value = mock_tmp_context
+    
+    # Setup Gemini client mock
+    mock_gemini_instance = MagicMock()
+    mock_gemini_client_class.return_value = mock_gemini_instance
+    
+    # Run main
+    main.main()
+    
+    # Verifications
+    mock_builder_instance.prepare_directory.assert_called_once()
+    mock_image_processor.dds_to_png.assert_called_once()
+    mock_gemini_instance.generate_texture.assert_called_once()
+    mock_image_processor.img_to_dds.assert_called_once()
+    mock_builder_instance.generate_mtl_file.assert_called_once()
+    mock_builder_instance.generate_outfit_file.assert_called_once()
+
+@patch("main.argparse.ArgumentParser.parse_args")
+@patch("main.settings")
+def test_main_base_texture_not_found(mock_settings_in_main, mock_parse_args, mock_config, caplog):
+    """Test that main exits and logs an error when the base texture is missing."""
+    import logging
+    
+    mock_args = MagicMock()
+    mock_args.name = "TestMod"
+    mock_args.style = "Test Style"
+    mock_parse_args.return_value = mock_args
+
+    # Override the settings mock in main to return a fake path that does not exist
+    mock_path = MagicMock()
+    mock_path.exists.return_value = False
+    mock_settings_in_main.base_texture_path = mock_path
+
+    # main script uses exit(1) on failure
+    with pytest.raises(SystemExit) as excinfo:
+       with caplog.at_level(logging.ERROR):
+           main.main()
+           
+    assert excinfo.value.code == 1
+    assert "Base texture not found" in caplog.text
+
+@patch("main.argparse.ArgumentParser.parse_args")
+@patch("main.ModBuilder")
+def test_main_general_exception(mock_mod_builder_class, mock_parse_args, mock_config, caplog):
+    """Test that unexpected exceptions are caught and logged."""
+    import logging
+    
+    mock_args = MagicMock()
+    mock_args.name = "TestMod"
+    mock_args.style = "Test Style"
+    mock_parse_args.return_value = mock_args
+    
+    mock_mod_builder_class.side_effect = Exception("A wild unexpected error appeared!")
+    
+    with pytest.raises(SystemExit) as excinfo:
+       with caplog.at_level(logging.ERROR):
+           main.main()
+           
+    assert excinfo.value.code == 1
+    assert "An error occurred during mod generation" in caplog.text
+    assert "A wild unexpected error appeared!" in caplog.text

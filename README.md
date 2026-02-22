@@ -48,3 +48,17 @@ docker-compose run --rm generator --name "NeonSurge" --style "cyberpunk neon lig
 ```
 
 The script will automatically read the base texture, contact the Gemini API, convert the formats, and generate the mod inside your `Haydee/Outfits` folder.
+
+## Testing
+
+This project uses `pytest` for automated testing.
+
+1. Install the development dependencies:
+   ```bash
+   pip install -r requirements-dev.txt
+   ```
+2. Run the test suite with coverage:
+   ```bash
+   pytest
+   ```
+   *Note: Valid API Keys or a real Haydee installation are **not required** to run the tests, as external dependencies and the filesystem are safely mocked.*
