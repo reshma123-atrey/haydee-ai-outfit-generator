@@ -1,4 +1,4 @@
-# Haydee Outfit Generator (Powered by Gemini)
+# [Haydee](https://store.steampowered.com/app/530890/Haydee/) Outfit Generator (Powered by Gemini)
 
 [![Tests](https://github.com/thegamerbay/haydee-ai-outfit-generator/actions/workflows/tests.yml/badge.svg)](https://github.com/thegamerbay/haydee-ai-outfit-generator/actions/workflows/tests.yml)
 [![Lint](https://github.com/thegamerbay/haydee-ai-outfit-generator/actions/workflows/lint.yml/badge.svg)](https://github.com/thegamerbay/haydee-ai-outfit-generator/actions/workflows/lint.yml)
@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
-Automated Python pipeline to generate custom outfit textures for the game Haydee using the Google Gemini API.
+Automated Python pipeline to generate custom outfit textures for the game [Haydee](https://store.steampowered.com/app/530890/Haydee/) using the Google Gemini API.
 
 ## 📋 Prerequisites
 
