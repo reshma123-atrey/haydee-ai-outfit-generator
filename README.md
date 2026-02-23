@@ -16,6 +16,16 @@ Automated Python pipeline to generate custom outfit textures for the game [Hayde
    * Download from [ImageMagick.org](https://imagemagick.org/script/download.php).
    * **Important during installation (Windows):** Ensure you check the box that says *"Install legacy utilities (e.g. convert)"* and add it to your System PATH.
 
+### 🔑 Getting a Gemini API Key
+
+1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey).
+2. Sign in with your Google account.
+3. Click the **"Create API key"** button.
+4. If prompted, read and accept the terms of service.
+5. Click on **"Create API key in new project"** (or use an existing project).
+6. Copy the generated key. You will need it for the `.env` file in the setup steps below.
+7. **Note:** Generating and using the Gemini API key is completely free within generous rate limits.
+
 ## 💻 Setup (Local)
 
 1. Clone the repository.
