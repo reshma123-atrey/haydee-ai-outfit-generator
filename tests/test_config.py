@@ -21,27 +21,27 @@ def test_settings_property_base_texture_path(mock_config):
 def test_settings_missing_api_key(monkeypatch):
     """Test that missing required settings raise ValidationError."""
     import os
-    import core.config
+    import haydee_outfit_gen.config
     
     # Force pure environment variables for this test
     monkeypatch.delenv("GEMINI_API_KEY", raising=False)
-    monkeypatch.setattr(core.config, "settings", None)
+    monkeypatch.setattr(haydee_outfit_gen.config, "settings", None)
     
     with pytest.raises(ValidationError) as excinfo:
-        core.config.Settings(_env_file=None)
+        haydee_outfit_gen.config.Settings(_env_file=None)
         
     assert "gemini_api_key" in str(excinfo.value)
 
 def test_settings_missing_haydee_path(monkeypatch):
     """Test that missing required settings raise ValidationError."""
     import os
-    import core.config
+    import haydee_outfit_gen.config
     
     monkeypatch.delenv("HAYDEE_PATH", raising=False)
     monkeypatch.setenv("GEMINI_API_KEY", "fake_test_key")
-    monkeypatch.setattr(core.config, "settings", None)
+    monkeypatch.setattr(haydee_outfit_gen.config, "settings", None)
     
     with pytest.raises(ValidationError) as excinfo:
-        core.config.Settings(_env_file=None)
+        haydee_outfit_gen.config.Settings(_env_file=None)
         
     assert "haydee_path" in str(excinfo.value)

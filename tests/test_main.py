@@ -1,13 +1,13 @@
 import pytest
 from unittest.mock import MagicMock, patch
-import main
+import haydee_outfit_gen.main as main
 
-@patch("main.argparse.ArgumentParser.parse_args")
-@patch("main.ModBuilder")
-@patch("main.ImageProcessor")
-@patch("main.settings")
-@patch("main.GeminiModClient")
-@patch("main.tempfile.TemporaryDirectory")
+@patch("haydee_outfit_gen.main.argparse.ArgumentParser.parse_args")
+@patch("haydee_outfit_gen.main.ModBuilder")
+@patch("haydee_outfit_gen.main.ImageProcessor")
+@patch("haydee_outfit_gen.main.settings")
+@patch("haydee_outfit_gen.main.GeminiModClient")
+@patch("haydee_outfit_gen.main.tempfile.TemporaryDirectory")
 def test_main_success_flow(
     mock_tmp_dir, 
     mock_gemini_client_class,
@@ -53,8 +53,8 @@ def test_main_success_flow(
     mock_builder_instance.generate_mtl_file.assert_called_once()
     mock_builder_instance.generate_outfit_file.assert_called_once()
 
-@patch("main.argparse.ArgumentParser.parse_args")
-@patch("main.settings")
+@patch("haydee_outfit_gen.main.argparse.ArgumentParser.parse_args")
+@patch("haydee_outfit_gen.main.settings")
 def test_main_base_texture_not_found(mock_settings_in_main, mock_parse_args, mock_config, caplog):
     """Test that main exits and logs an error when the base texture is missing."""
     import logging
@@ -77,8 +77,8 @@ def test_main_base_texture_not_found(mock_settings_in_main, mock_parse_args, moc
     assert excinfo.value.code == 1
     assert "Base texture not found" in caplog.text
 
-@patch("main.argparse.ArgumentParser.parse_args")
-@patch("main.ModBuilder")
+@patch("haydee_outfit_gen.main.argparse.ArgumentParser.parse_args")
+@patch("haydee_outfit_gen.main.ModBuilder")
 def test_main_general_exception(mock_mod_builder_class, mock_parse_args, mock_config, caplog):
     """Test that unexpected exceptions are caught and logged."""
     import logging

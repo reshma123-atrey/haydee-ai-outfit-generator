@@ -29,13 +29,13 @@ def mock_haydee_path(tmp_path):
 @pytest.fixture
 def mock_config(mock_haydee_path):
     """Returns a Settings instance with the mocked Haydee path."""
-    import core.config
+    import haydee_outfit_gen.config
     
     # Reload settings with the updated env var
-    _old_settings = core.config.settings
-    core.config.settings = core.config.Settings()
+    _old_settings = haydee_outfit_gen.config.settings
+    haydee_outfit_gen.config.settings = haydee_outfit_gen.config.Settings()
     
-    yield core.config.settings
+    yield haydee_outfit_gen.config.settings
     
     # Restore old settings after test
-    core.config.settings = _old_settings
+    haydee_outfit_gen.config.settings = _old_settings

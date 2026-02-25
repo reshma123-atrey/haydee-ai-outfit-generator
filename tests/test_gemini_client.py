@@ -1,18 +1,18 @@
 import pytest
 from pathlib import Path
 from unittest.mock import MagicMock, call
-from core.gemini_client import GeminiModClient
+from haydee_outfit_gen.gemini_client import GeminiModClient
 
 def test_gemini_client_init(mock_config, mocker):
     """Test client initializes with the correct API key."""
-    mock_genai = mocker.patch('core.gemini_client.genai')
+    mock_genai = mocker.patch('haydee_outfit_gen.gemini_client.genai')
     
     client = GeminiModClient()
     mock_genai.Client.assert_called_once_with(api_key="fake_test_key_123")
 
 def test_generate_texture_success_parts_image(mock_config, mocker, tmp_path):
     """Test successful image generation and saving using standard parts.image."""
-    mock_genai = mocker.patch('core.gemini_client.genai')
+    mock_genai = mocker.patch('haydee_outfit_gen.gemini_client.genai')
     
     # Setup mock client
     mock_client_instance = MagicMock()
@@ -48,7 +48,7 @@ def test_generate_texture_success_parts_image(mock_config, mocker, tmp_path):
 
 def test_generate_texture_success_inline_data(mock_config, mocker, tmp_path):
     """Test successful image generation and saving using inline_data fallback."""
-    mock_genai = mocker.patch('core.gemini_client.genai')
+    mock_genai = mocker.patch('haydee_outfit_gen.gemini_client.genai')
     
     mock_client_instance = MagicMock()
     mock_genai.Client.return_value = mock_client_instance
@@ -81,7 +81,7 @@ def test_generate_texture_success_inline_data(mock_config, mocker, tmp_path):
 
 def test_generate_texture_no_image_returned(mock_config, mocker, tmp_path):
     """Test that a RuntimeError is raised if no image is found in response."""
-    mock_genai = mocker.patch('core.gemini_client.genai')
+    mock_genai = mocker.patch('haydee_outfit_gen.gemini_client.genai')
     
     mock_client_instance = MagicMock()
     mock_genai.Client.return_value = mock_client_instance

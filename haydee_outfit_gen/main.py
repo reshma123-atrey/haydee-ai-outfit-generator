@@ -3,10 +3,10 @@ import logging
 import tempfile
 from pathlib import Path
 
-from core.config import settings
-from core.image_processor import ImageProcessor
-from core.gemini_client import GeminiModClient
-from core.mod_builder import ModBuilder
+from haydee_outfit_gen.config import settings
+from haydee_outfit_gen.image_processor import ImageProcessor
+from haydee_outfit_gen.gemini_client import GeminiModClient
+from haydee_outfit_gen.mod_builder import ModBuilder
 
 logging.basicConfig(
     level=logging.INFO,

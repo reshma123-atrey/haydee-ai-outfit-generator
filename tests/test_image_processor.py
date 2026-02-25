@@ -1,11 +1,11 @@
 import pytest
 from pathlib import Path
 from PIL import Image
-from core.image_processor import ImageProcessor
+from haydee_outfit_gen.image_processor import ImageProcessor
 
 def test_dds_to_png(mocker, tmp_path):
     """Test that dds format conversion properties are set accurately."""
-    mock_image_open = mocker.patch('core.image_processor.Image.open')
+    mock_image_open = mocker.patch('haydee_outfit_gen.image_processor.Image.open')
     mock_img_context = mock_image_open.return_value.__enter__.return_value
     
     dds_path = tmp_path / "input.dds"
@@ -25,8 +25,8 @@ def test_dds_to_png(mocker, tmp_path):
 ])
 def test_img_to_dds(mocker, tmp_path, resolution, expected_size):
     """Test that image conversion to dds executes required transformations."""
-    mocker.patch('core.image_processor.settings.image_resolution', resolution)
-    mock_image_open = mocker.patch('core.image_processor.Image.open')
+    mocker.patch('haydee_outfit_gen.image_processor.settings.image_resolution', resolution)
+    mock_image_open = mocker.patch('haydee_outfit_gen.image_processor.Image.open')
     mock_img_context = mock_image_open.return_value.__enter__.return_value
     mock_resized = mocker.MagicMock()
     mock_img_context.resize.return_value = mock_resized

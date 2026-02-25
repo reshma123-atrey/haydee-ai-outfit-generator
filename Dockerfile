@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Set default entrypoint
-ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["python", "-m", "haydee_outfit_gen.main"]

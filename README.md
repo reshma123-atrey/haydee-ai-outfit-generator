@@ -41,7 +41,7 @@ Automated Python pipeline to generate custom outfit textures for the game [Hayde
 1. Clone the repository.
 2. Install dependencies:
    ```bash
-   pip install -r requirements.txt
+   pip install .
    ```
 
 3. Copy `.env.example` to `.env` (or create one) and configure your variables:
@@ -64,7 +64,7 @@ If you prefer to run the project without installing Python locally, you can use 
 Run the script by providing the mod name and the desired style description:
 
 ```bash
-python main.py --name "NeonSurge" --style "cyberpunk neon lights with dark carbon fiber armor"
+haydee-gen --name "NeonSurge" --style "cyberpunk neon lights with dark carbon fiber armor"
 ```
 
 ### Running with Docker

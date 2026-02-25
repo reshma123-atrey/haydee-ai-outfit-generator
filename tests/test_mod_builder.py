@@ -1,10 +1,10 @@
 import pytest
 from pathlib import Path
-from core.mod_builder import ModBuilder
+from haydee_outfit_gen.mod_builder import ModBuilder
 
 def test_mod_builder_init_valid(mock_config, mocker):
     """Test initialization with a valid mod name."""
-    mocker.patch('core.mod_builder.settings', mock_config)
+    mocker.patch('haydee_outfit_gen.mod_builder.settings', mock_config)
     builder = ModBuilder("TestOutfit")
     assert builder.mod_name == "TestOutfit"
     # Convert to string to avoid WindowsPath vs PosixPath or absolute differences
@@ -21,7 +21,7 @@ def test_mod_builder_init_invalid(mock_config):
 
 def test_prepare_directory(mock_config, mocker):
     """Test that prepare_directory creates the necessary folder."""
-    mocker.patch('core.mod_builder.settings', mock_config)
+    mocker.patch('haydee_outfit_gen.mod_builder.settings', mock_config)
     builder = ModBuilder("Cyberpunk")
     
     assert not builder.mod_dir.exists()
@@ -31,7 +31,7 @@ def test_prepare_directory(mock_config, mocker):
 
 def test_prepare_directory_overwrites(mock_config, mocker):
     """Test that existing directories are overwritten cleanly."""
-    mocker.patch('core.mod_builder.settings', mock_config)
+    mocker.patch('haydee_outfit_gen.mod_builder.settings', mock_config)
     builder = ModBuilder("OverwrittenMod")
     builder.prepare_directory()
     
@@ -48,7 +48,7 @@ def test_prepare_directory_overwrites(mock_config, mocker):
 
 def test_generate_mtl_file(mock_config, mocker):
     """Test that the .mtl file is generated with correct content."""
-    mocker.patch('core.mod_builder.settings', mock_config)
+    mocker.patch('haydee_outfit_gen.mod_builder.settings', mock_config)
     builder = ModBuilder("Synthwave")
     builder.prepare_directory()
     builder.generate_mtl_file()
@@ -62,7 +62,7 @@ def test_generate_mtl_file(mock_config, mocker):
 
 def test_generate_outfit_file(mock_config, mocker):
     """Test that the .outfit file is generated with correct content."""
-    mocker.patch('core.mod_builder.settings', mock_config)
+    mocker.patch('haydee_outfit_gen.mod_builder.settings', mock_config)
     builder = ModBuilder("Retro")
     builder.prepare_directory()
     builder.generate_outfit_file()
