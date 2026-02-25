@@ -23,10 +23,10 @@ class ImageProcessor:
         with Image.open(img_path) as img:
             target_size = 4096 if settings.image_resolution == "4K" else 2048
             
-            # Изменяем размер с качественным фильтром сглаживания
+            # Resize with a high-quality anti-aliasing filter
             img_resized = img.resize((target_size, target_size), Image.Resampling.LANCZOS)
             
-            # Сохраняем напрямую в DDS с DXT5 компрессией
+            # Save directly to DDS with DXT5 compression
             img_resized.save(dds_path, format="DDS", pixel_format="DXT5")
             
         logger.info(f"Successfully saved to {dds_path}")
