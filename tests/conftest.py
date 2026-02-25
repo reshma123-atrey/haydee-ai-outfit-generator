@@ -4,9 +4,6 @@ import sys
 from unittest.mock import MagicMock
 from pathlib import Path
 
-# Mock wand before anything imports it
-sys.modules['wand'] = MagicMock()
-sys.modules['wand.image'] = MagicMock()
 
 # Set default environment variables for testing before config is imported
 os.environ["GEMINI_API_KEY"] = "fake_test_key_123"

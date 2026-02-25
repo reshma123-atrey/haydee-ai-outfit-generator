@@ -1,6 +1,6 @@
 import logging
 from pathlib import Path
-from wand.image import Image
+from PIL import Image
 from .config import settings
 
 logger = logging.getLogger(__name__)
@@ -12,21 +12,21 @@ class ImageProcessor:
     def dds_to_png(dds_path: Path, png_path: Path) -> None:
         """Converts a DDS texture to PNG format for API processing."""
         logger.info(f"Converting {dds_path.name} to PNG...")
-        with Image(filename=str(dds_path)) as img:
-            img.format = 'png'
-            img.save(filename=str(png_path))
+        with Image.open(dds_path) as img:
+            img.save(png_path, format="PNG")
         logger.info(f"Successfully saved to {png_path}")
 
     @staticmethod
     def img_to_dds(img_path: Path, dds_path: Path) -> None:
         """Converts a generated image (PNG/JPG) back to DDS format."""
         logger.info(f"Converting {img_path.name} to DDS...")
-        with Image(filename=str(img_path)) as img:
-            # Force size dynamically before saving
+        with Image.open(img_path) as img:
             target_size = 4096 if settings.image_resolution == "4K" else 2048
-            img.resize(target_size, target_size)
-            # DXT5 compression is standard for diffuse textures with details/alpha
-            img.compression = 'dxt5'
-            img.format = 'dds'
-            img.save(filename=str(dds_path))
+            
+            # Изменяем размер с качественным фильтром сглаживания
+            img_resized = img.resize((target_size, target_size), Image.Resampling.LANCZOS)
+            
+            # Сохраняем напрямую в DDS с DXT5 компрессией
+            img_resized.save(dds_path, format="DDS", pixel_format="DXT5")
+            
         logger.info(f"Successfully saved to {dds_path}")

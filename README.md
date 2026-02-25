@@ -24,10 +24,7 @@ Automated Python pipeline to generate custom outfit textures for the game [Hayde
 
 ## 📋 Prerequisites
 
-1. **Python 3.12+**
-2. **ImageMagick**: Required for the `Wand` library to process `.dds` files.
-   * Download from [ImageMagick.org](https://imagemagick.org/script/download.php).
-   * **Important during installation (Windows):** Ensure you check the box that says *"Install legacy utilities (e.g. convert)"* and add it to your System PATH.
+- **Python 3.12+**
 
 ### 🔑 Getting a Gemini API Key
 
@@ -54,7 +51,7 @@ Automated Python pipeline to generate custom outfit textures for the game [Hayde
 
 ## 🐳 Setup (Docker)
 
-If you prefer to run the project without installing Python and ImageMagick locally, you can use Docker.
+If you prefer to run the project without installing Python locally, you can use Docker.
 
 1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 2. Create your `.env` file and set `GEMINI_API_KEY` and `HAYDEE_PATH`.
