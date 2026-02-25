@@ -15,11 +15,6 @@ class GeminiModClient:
     def generate_texture(self, base_image_path: Path, style: str, output_path: Path) -> None:
         """
         Sends the base texture and prompt to Gemini to generate a new texture.
-        
-        Note: The public standard SDK currently focuses on Text-to-Image (Imagen 3).
-        If the standard endpoint restricts direct img2img generation, you may need 
-        Vertex AI access or to use this prompt as a structural guide for web-automation.
-        This implementation represents the correct SDK structure for generation.
         """
         logger.info(f"Requesting Gemini to generate texture in style: '{style}'...")
 
