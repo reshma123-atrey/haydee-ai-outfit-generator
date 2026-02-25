@@ -1,6 +1,7 @@
 import logging
 from pathlib import Path
 from wand.image import Image
+from .config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -21,8 +22,9 @@ class ImageProcessor:
         """Converts a generated image (PNG/JPG) back to DDS format."""
         logger.info(f"Converting {img_path.name} to DDS...")
         with Image(filename=str(img_path)) as img:
-            # Force size 2048x2048 before saving
-            img.resize(2048, 2048)
+            # Force size dynamically before saving
+            target_size = 4096 if settings.image_resolution == "4K" else 2048
+            img.resize(target_size, target_size)
             # DXT5 compression is standard for diffuse textures with details/alpha
             img.compression = 'dxt5'
             img.format = 'dds'
