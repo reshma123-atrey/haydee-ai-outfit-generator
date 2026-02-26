@@ -12,6 +12,9 @@
 
 Automated Python pipeline to generate custom outfit textures for the game [Haydee](https://store.steampowered.com/app/530890/Haydee/) using the Google Gemini API.
 
+> [!TIP]
+> **Not a fan of the command line?** Check out the [Haydee AI Outfit Generator GUI](https://github.com/thegamerbay/haydee-ai-outfit-generator-gui)! It's a modern, ready-to-use graphical interface that lets you easily generate custom outfits without messing with terminals or environment variables. Download the latest release to get started instantly!
+
 ## ✨ Generation Examples
 
 | | | | |
