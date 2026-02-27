@@ -29,12 +29,13 @@ class GeminiModClient:
         I need you to completely transform the visual theme of this texture into: {style}.
 
         CRITICAL INSTRUCTIONS:
-        1. Anatomy Warning: The two large vertical sections filling the bottom half of the image are the character's LEGS and THIGHS, absolutely NOT a torso. DO NOT generate abdominal muscles, chests, or torso armor on these lower sections. Treat them strictly as leg/thigh surfaces.
-        2. Exact Mapping: Maintain the exact UV layout, seams, alignment, and proportions of the original image so it maps perfectly back onto the 3D model.
-        3. Transparency/Background: Keep the blank and transparent spaces exactly where they are in the original file. Do not fill empty UV space.
-        4. Application: Apply the '{style}' aesthetic purely to the textured areas (armor panels, skin, details).
-        5. Quality: Ensure high-fidelity texturing with sharp details, respecting the shadows and highlights of the original topology.
-        6. Resolution: Please generate the output image in exactly {res_text} resolution.
+        1. Anatomy Warning (Legs): The two large vertical sections filling the bottom half of the image are the character's LEGS and THIGHS, absolutely NOT a torso. DO NOT generate abdominal muscles, chests, or torso armor on these lower sections. Treat them strictly as leg/thigh surfaces.
+        2. Anatomy Warning (Head/Face): The character is a FACELESS robot. The round area on the mid-right is the helmet/head. ABSOLUTELY DO NOT generate human faces, eyes, noses, mouths, teeth, or hair. This area MUST remain a blank synthetic panel.
+        3. Exact Mapping: Maintain the exact UV layout, seams, alignment, and proportions of the original image so it maps perfectly back onto the 3D model.
+        4. Transparency/Background: Keep the blank and transparent spaces exactly where they are in the original file. Do not fill empty UV space.
+        5. Application: Apply the '{style}' aesthetic purely to the textured areas (armor panels, skin, details).
+        6. Quality: Ensure high-fidelity texturing with sharp details, respecting the shadows and highlights of the original topology.
+        7. Resolution: Please generate the output image in exactly {res_text} resolution.
         
         Output ONLY the generated texture image.
         """
