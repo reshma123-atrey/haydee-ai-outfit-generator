@@ -95,6 +95,12 @@ class GeminiModClient:
                 with Image.open(output_path) as gen_img:
                     width, height = gen_img.size
                     logger.info(f"Generated image resolution from Gemini API: {width}x{height}")
+                    
+                    expected_res = 4096 if settings.image_resolution == "4K" else 2048
+                    if width != expected_res or height != expected_res:
+                        raise ValueError(f"Generated image resolution ({width}x{height}) does not match expected {settings.image_resolution} ({expected_res}x{expected_res}).")
+            except ValueError:
+                raise
             except Exception as e:
                 logger.warning(f"Could not determine generated image resolution: {e}")
                 
