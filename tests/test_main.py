@@ -2,6 +2,7 @@ import pytest
 from unittest.mock import MagicMock, patch
 import haydee_outfit_gen.main as main
 
+@patch("haydee_outfit_gen.main.sys.argv", ["haydee-gen", "generate"])
 @patch("haydee_outfit_gen.main.argparse.ArgumentParser.parse_args")
 @patch("haydee_outfit_gen.main.ModBuilder")
 @patch("haydee_outfit_gen.main.ImageProcessor")
@@ -98,6 +99,7 @@ def test_main_backward_compatibility(
     mock_gemini_instance.generate_texture.assert_called_once()
     mock_image_processor.img_to_dds.assert_called_once()
 
+@patch("haydee_outfit_gen.main.sys.argv", ["haydee-gen", "generate"])
 @patch("haydee_outfit_gen.main.argparse.ArgumentParser.parse_args")
 @patch("haydee_outfit_gen.main.settings")
 def test_main_base_texture_not_found(mock_settings_in_main, mock_parse_args, mock_config, caplog):
@@ -124,6 +126,7 @@ def test_main_base_texture_not_found(mock_settings_in_main, mock_parse_args, moc
     assert excinfo.value.code == 1
     assert "Base texture not found" in caplog.text
 
+@patch("haydee_outfit_gen.main.sys.argv", ["haydee-gen", "generate"])
 @patch("haydee_outfit_gen.main.argparse.ArgumentParser.parse_args")
 @patch("haydee_outfit_gen.main.ModBuilder")
 def test_main_general_exception(mock_mod_builder_class, mock_parse_args, mock_config, caplog):
@@ -147,6 +150,7 @@ def test_main_general_exception(mock_mod_builder_class, mock_parse_args, mock_co
     assert "An error occurred" in caplog.text
     assert "A wild unexpected error appeared!" in caplog.text
 
+@patch("haydee_outfit_gen.main.sys.argv", ["haydee-gen", "group"])
 @patch("haydee_outfit_gen.main.argparse.ArgumentParser.parse_args")
 @patch("haydee_outfit_gen.main.MultiModBuilder")
 def test_main_group_success_flow(
